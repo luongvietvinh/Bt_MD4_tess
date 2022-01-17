@@ -1,0 +1,35 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<h1></h1>
+<table border="2">
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>description</td>
+        <td>price</td>
+        <td>categories</td>
+        <td>img</td>
+    </tr>
+    <td><button class="bubble-legend-symbol"><a href="/create">Create</a></button></td>
+    <div th:each="p,loop : ${products}">
+        <tr>
+            <td th:text="${loop.count}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.description}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.categories.name}"></td>
+            <td><img th:src="${p.img}" width="200" height="150"></td>
+            <td><button><a th:href="@{/edit(id=${p.id})}">edit</a></button></td>
+            <td><button><a th:href="@{/delete(id=${p.id})}">delete</a></button></td>
+        </tr>
+    </div>
+
+
+</table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="col-2">
+    <div class="form-container">
+        <div class="form-btn">
+            <span onclick="register()">create Product</span>
+            <hr id="Indicator">
+        </div>
+        <form  method="post" th:object="${products}" enctype="multipart/form-data">
+
+            <p><input th:field="*{name}" ></p><br>
+            <p><input th:field="*{description}"></p><br>
+            <p><input th:field="*{price}"></p><br>
+            <select name="idcategori">
+                <option th:each="c : ${categories}" th:text="${c.name}" th:value="${c.id}"> </option>
+            </select>
+            <p><img th:src="${products.img}" width="200" height="150" alt=""></p>
+            <p><input type="file" name="uppImg"></p>
+                <button type="submit" class="bubble-legend-symbol">Register</button></p>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
